@@ -2436,13 +2436,14 @@ footer {
         <span class="p-tag-num">01/04</span>
       </div>
       <div class="card-bg site-barber">
-        <div class="card-browser">
+        <div class="card-browser has-project-image">
           <div class="browser-bar">
             <div class="bdot bdot-r"></div>
             <div class="bdot bdot-y"></div>
             <div class="bdot bdot-g"></div>
             <div class="browser-url">https://pedropetter.github.io/Jr_barbearia/</div>
           </div>
+          <img class="project-shot" src="images/jr-logo.jpg" alt="Preview do site Barbearia Premium" loading="lazy">
           <div class="site-hero"><div class="s-logo"></div><div class="s-texts"><div class="s-t1"></div><div class="s-t2"></div></div></div>
           <div class="site-services"><div class="s-svc"></div><div class="s-svc"></div><div class="s-svc"></div></div>
           <div class="site-cta"></div>
@@ -2465,13 +2466,14 @@ footer {
         <span class="p-tag-num">02/04</span>
       </div>
       <div class="card-bg site-fashion">
-        <div class="card-browser">
+        <div class="card-browser has-project-image">
           <div class="browser-bar">
             <div class="bdot bdot-r"></div>
             <div class="bdot bdot-y"></div>
             <div class="bdot bdot-g"></div>
             <div class="browser-url">https://pedropetter.github.io/Closet_da_Nil/</div>
           </div>
+          <img class="project-shot" src="images/closet-logo.jpg" alt="Preview do site Moda Feminina" loading="lazy">
           <div class="site-hero"><div class="m-hero-txt"><div class="s-t1"></div><div class="s-t2"></div></div></div>
           <div class="site-grid"><div class="s-prod"></div><div class="s-prod"></div><div class="s-prod"></div><div class="s-prod"></div></div>
           <div class="site-cta"></div>
@@ -2494,13 +2496,14 @@ footer {
         <span class="p-tag-num">03/04</span>
       </div>
       <div class="card-bg site-tech">
-        <div class="card-browser">
+        <div class="card-browser has-project-image">
           <div class="browser-bar">
             <div class="bdot bdot-r"></div>
             <div class="bdot bdot-y"></div>
             <div class="bdot bdot-g"></div>
             <div class="browser-url">https://pedropetter.github.io/fox-games/</div>
           </div>
+          <img class="project-shot" src="images/tech-store-preview.svg" alt="Preview do site Tech Store" loading="lazy">
           <div class="site-hero"><div class="s-phone"></div><div class="s-texts"><div class="s-t1"></div><div class="s-t2"></div></div></div>
           <div class="site-cats"><div class="s-cat"></div><div class="s-cat"></div><div class="s-cat"></div></div>
           <div class="site-cta"></div>
@@ -2523,13 +2526,14 @@ footer {
         <span class="p-tag-num">04/04</span>
       </div>
       <div class="card-bg site-services">
-        <div class="card-browser">
+        <div class="card-browser has-project-image">
           <div class="browser-bar">
             <div class="bdot bdot-r"></div>
             <div class="bdot bdot-y"></div>
             <div class="bdot bdot-g"></div>
             <div class="browser-url">https://pedropetter.github.io/Cavalcante_Advocacia-/</div>
           </div>
+          <img class="project-shot" src="images/servicos-locais-preview.svg" alt="Preview do site Cavalcante Advocacia" loading="lazy">
           <div class="site-hero"><div class="s-icon"></div><div class="s-texts"><div class="s-t1"></div><div class="s-t2"></div></div></div>
           <div class="site-svcs"><div class="s-sv"></div><div class="s-sv"></div><div class="s-sv"></div></div>
           <div class="site-cta"></div>
@@ -3014,137 +3018,150 @@ footer {
 (function() {
   const canvas = document.getElementById('three-canvas');
   const hero = document.getElementById('hero');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  const smallViewport = window.innerWidth < 1100;
+  const lowPowerDevice = typeof navigator.hardwareConcurrency === 'number' && navigator.hardwareConcurrency <= 4;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setClearColor(0x000000, 0);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-  camera.position.z = 5;
-
-  function resize() {
-    const w = hero.offsetWidth;
-    const h = hero.offsetHeight;
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Mouse tracking (normalised -1 to +1)
-  const mouse = { x: 0, y: 0 };
-  const target = { x: 0, y: 0 };
-  hero.addEventListener('mousemove', e => {
-    const r = hero.getBoundingClientRect();
-    mouse.x = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-    mouse.y = ((e.clientY - r.top)  / r.height - 0.5) * -2;
-  });
-
-  // ── Materials ──
-  const blueMat  = new THREE.LineBasicMaterial({ color: 0x2060FF, transparent: true, opacity: 0.55 });
-  const greenMat = new THREE.LineBasicMaterial({ color: 0x00FF88, transparent: true, opacity: 0.30 });
-  const dimMat   = new THREE.LineBasicMaterial({ color: 0x4A4A6A, transparent: true, opacity: 0.20 });
-
-  // ── Helper: wireframe box ──
-  function makeWireBox(size, mat) {
-    const geo = new THREE.BoxGeometry(size, size, size);
-    const edges = new THREE.EdgesGeometry(geo);
-    return new THREE.LineSegments(edges, mat);
+  if (!canvas || !hero || !window.THREE || reducedMotion || coarsePointer || smallViewport || lowPowerDevice) {
+    if (canvas) canvas.style.display = 'none';
+    return;
   }
 
-  // ── Group: nested cubes ──
-  const group = new THREE.Group();
+  try {
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.25));
+    renderer.setClearColor(0x000000, 0);
 
-  const cube1 = makeWireBox(2.0, blueMat);
-  const cube2 = makeWireBox(1.35, greenMat);
-  const cube3 = makeWireBox(0.80, dimMat);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 5;
 
-  group.add(cube1, cube2, cube3);
-
-  // ── Diagonal cross lines connecting cube corners ──
-  function addDiag(from, to, mat) {
-    const geo = new THREE.BufferGeometry().setFromPoints([
-      new THREE.Vector3(...from),
-      new THREE.Vector3(...to)
-    ]);
-    group.add(new THREE.Line(geo, mat));
-  }
-  const s = 1.0;
-  addDiag([-s,-s,-s],[s,s,s], dimMat);
-  addDiag([s,-s,-s],[-s,s,s], dimMat);
-  addDiag([-s,s,-s],[s,-s,s], dimMat);
-  addDiag([s,s,-s],[-s,-s,s], dimMat);
-
-  // ── Orbit ring ──
-  const ringGeo = new THREE.BufferGeometry();
-  const ringPts = [];
-  for (let i = 0; i <= 128; i++) {
-    const a = (i / 128) * Math.PI * 2;
-    ringPts.push(new THREE.Vector3(Math.cos(a) * 1.6, Math.sin(a) * 1.6, 0));
-  }
-  ringGeo.setFromPoints(ringPts);
-  const ring = new THREE.Line(ringGeo, new THREE.LineBasicMaterial({ color: 0x2060FF, transparent: true, opacity: 0.12 }));
-  group.add(ring);
-
-  // Position group to right side
-  group.position.set(1.8, 0, 0);
-  scene.add(group);
-
-  // ── Small floating particles ──
-  const particles = [];
-  const particleMat = new THREE.PointsMaterial({ color: 0x2060FF, size: 0.04, transparent: true, opacity: 0.6 });
-  const pGeo = new THREE.BufferGeometry();
-  const pPositions = new Float32Array(60 * 3);
-  for (let i = 0; i < 60; i++) {
-    pPositions[i*3]   = (Math.random() - 0.5) * 8;
-    pPositions[i*3+1] = (Math.random() - 0.5) * 6;
-    pPositions[i*3+2] = (Math.random() - 0.5) * 4;
-    particles.push({ vx: (Math.random()-0.5)*0.003, vy: (Math.random()-0.5)*0.003 });
-  }
-  pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-  const points = new THREE.Points(pGeo, particleMat);
-  scene.add(points);
-
-  // ── Animation loop ──
-  let t = 0;
-  function animate() {
-    requestAnimationFrame(animate);
-    t += 0.005;
-
-    // Smooth mouse follow
-    target.x += (mouse.x - target.x) * 0.04;
-    target.y += (mouse.y - target.y) * 0.04;
-
-    // Auto-rotate + mouse tilt
-    cube1.rotation.x = t * 0.4 + target.y * 0.4;
-    cube1.rotation.y = t * 0.6 + target.x * 0.4;
-    cube2.rotation.x = -t * 0.5 + target.y * 0.3;
-    cube2.rotation.y = t * 0.7 + target.x * 0.3;
-    cube3.rotation.x = t * 0.8 + target.y * 0.2;
-    cube3.rotation.y = -t * 0.4 + target.x * 0.5;
-    ring.rotation.z  = t * 0.3;
-    ring.rotation.x  = 0.4 + target.y * 0.2;
-
-    // Group gentle float
-    group.position.y = Math.sin(t * 0.5) * 0.15;
-    group.rotation.y = target.x * 0.15;
-    group.rotation.x = target.y * 0.1;
-
-    // Animate particles
-    const pos = pGeo.attributes.position.array;
-    for (let i = 0; i < 60; i++) {
-      pos[i*3]   += particles[i].vx;
-      pos[i*3+1] += particles[i].vy;
-      if (Math.abs(pos[i*3])   > 4) particles[i].vx *= -1;
-      if (Math.abs(pos[i*3+1]) > 3) particles[i].vy *= -1;
+    function resize() {
+      const w = hero.offsetWidth;
+      const h = hero.offsetHeight;
+      renderer.setSize(w, h);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
     }
-    pGeo.attributes.position.needsUpdate = true;
+    resize();
+    window.addEventListener('resize', resize);
 
-    renderer.render(scene, camera);
+    const mouse = { x: 0, y: 0 };
+    const target = { x: 0, y: 0 };
+    hero.addEventListener('mousemove', e => {
+      const r = hero.getBoundingClientRect();
+      mouse.x = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      mouse.y = ((e.clientY - r.top)  / r.height - 0.5) * -2;
+    });
+
+    const blueMat  = new THREE.LineBasicMaterial({ color: 0x2060FF, transparent: true, opacity: 0.45 });
+    const greenMat = new THREE.LineBasicMaterial({ color: 0x00FF88, transparent: true, opacity: 0.22 });
+    const dimMat   = new THREE.LineBasicMaterial({ color: 0x4A4A6A, transparent: true, opacity: 0.16 });
+
+    function makeWireBox(size, mat) {
+      const geo = new THREE.BoxGeometry(size, size, size);
+      const edges = new THREE.EdgesGeometry(geo);
+      return new THREE.LineSegments(edges, mat);
+    }
+
+    const group = new THREE.Group();
+
+    const cube1 = makeWireBox(2.0, blueMat);
+    const cube2 = makeWireBox(1.35, greenMat);
+    const cube3 = makeWireBox(0.80, dimMat);
+
+    group.add(cube1, cube2, cube3);
+
+    function addDiag(from, to, mat) {
+      const geo = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(...from),
+        new THREE.Vector3(...to)
+      ]);
+      group.add(new THREE.Line(geo, mat));
+    }
+    const s = 1.0;
+    addDiag([-s,-s,-s],[s,s,s], dimMat);
+    addDiag([s,-s,-s],[-s,s,s], dimMat);
+    addDiag([-s,s,-s],[s,-s,s], dimMat);
+    addDiag([s,s,-s],[-s,-s,s], dimMat);
+
+    const ringGeo = new THREE.BufferGeometry();
+    const ringPts = [];
+    for (let i = 0; i <= 72; i++) {
+      const a = (i / 72) * Math.PI * 2;
+      ringPts.push(new THREE.Vector3(Math.cos(a) * 1.6, Math.sin(a) * 1.6, 0));
+    }
+    ringGeo.setFromPoints(ringPts);
+    const ring = new THREE.Line(ringGeo, new THREE.LineBasicMaterial({ color: 0x2060FF, transparent: true, opacity: 0.08 }));
+    group.add(ring);
+
+    group.position.set(1.8, 0, 0);
+    scene.add(group);
+
+    const particles = [];
+    const particleMat = new THREE.PointsMaterial({ color: 0x2060FF, size: 0.04, transparent: true, opacity: 0.45 });
+    const pGeo = new THREE.BufferGeometry();
+    const pPositions = new Float32Array(24 * 3);
+    for (let i = 0; i < 24; i++) {
+      pPositions[i*3]   = (Math.random() - 0.5) * 8;
+      pPositions[i*3+1] = (Math.random() - 0.5) * 6;
+      pPositions[i*3+2] = (Math.random() - 0.5) * 4;
+      particles.push({ vx: (Math.random()-0.5)*0.0018, vy: (Math.random()-0.5)*0.0018 });
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+    const points = new THREE.Points(pGeo, particleMat);
+    scene.add(points);
+
+    let t = 0;
+    let rafId = 0;
+
+    function animate() {
+      rafId = requestAnimationFrame(animate);
+      t += 0.004;
+
+      target.x += (mouse.x - target.x) * 0.035;
+      target.y += (mouse.y - target.y) * 0.035;
+
+      cube1.rotation.x = t * 0.32 + target.y * 0.3;
+      cube1.rotation.y = t * 0.48 + target.x * 0.3;
+      cube2.rotation.x = -t * 0.38 + target.y * 0.2;
+      cube2.rotation.y = t * 0.56 + target.x * 0.22;
+      cube3.rotation.x = t * 0.65 + target.y * 0.16;
+      cube3.rotation.y = -t * 0.3 + target.x * 0.26;
+      ring.rotation.z  = t * 0.22;
+      ring.rotation.x  = 0.35 + target.y * 0.12;
+
+      group.position.y = Math.sin(t * 0.5) * 0.12;
+      group.rotation.y = target.x * 0.12;
+      group.rotation.x = target.y * 0.08;
+
+      const pos = pGeo.attributes.position.array;
+      for (let i = 0; i < 24; i++) {
+        pos[i*3]   += particles[i].vx;
+        pos[i*3+1] += particles[i].vy;
+        if (Math.abs(pos[i*3])   > 4) particles[i].vx *= -1;
+        if (Math.abs(pos[i*3+1]) > 3) particles[i].vy *= -1;
+      }
+      pGeo.attributes.position.needsUpdate = true;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      } else if (!rafId) {
+        animate();
+      }
+    });
+  } catch (error) {
+    console.warn('Three.js desativado por erro:', error);
+    canvas.style.display = 'none';
   }
-  animate();
 })();
 
 // ═══════════════════════════════════════════════
