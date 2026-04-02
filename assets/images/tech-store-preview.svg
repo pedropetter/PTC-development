@@ -1,0 +1,35 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="48" fill="#06101E"/>
+  <rect width="1200" height="800" rx="48" fill="url(#bgGlow)"/>
+  <circle cx="973" cy="186" r="236" fill="#2060FF" fill-opacity="0.18"/>
+  <circle cx="187" cy="684" r="260" fill="#00FF88" fill-opacity="0.08"/>
+  <rect x="66" y="62" width="1068" height="676" rx="38" fill="#0A1629" stroke="rgba(255,255,255,0.1)"/>
+  <rect x="108" y="116" width="984" height="70" rx="22" fill="#0F2038"/>
+  <circle cx="149" cy="151" r="8" fill="#FF5F57"/>
+  <circle cx="177" cy="151" r="8" fill="#FFBD2E"/>
+  <circle cx="205" cy="151" r="8" fill="#28CA41"/>
+  <rect x="108" y="230" width="432" height="340" rx="30" fill="#0D1E34"/>
+  <rect x="140" y="262" width="368" height="204" rx="24" fill="url(#screenGlow)" stroke="#2B64D8" stroke-opacity="0.45"/>
+  <path d="M190 402L252 346L307 388L380 309L457 358" stroke="#8DB5FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="458" cy="358" r="12" fill="#00FF88"/>
+  <rect x="140" y="494" width="188" height="18" rx="9" fill="#2A78FF"/>
+  <rect x="140" y="528" width="248" height="14" rx="7" fill="#8BA0C6" fill-opacity="0.35"/>
+  <rect x="574" y="230" width="220" height="154" rx="26" fill="#112643"/>
+  <rect x="826" y="230" width="220" height="154" rx="26" fill="#112643"/>
+  <rect x="574" y="416" width="472" height="122" rx="26" fill="#112643"/>
+  <rect x="574" y="570" width="472" height="92" rx="26" fill="#0E1F37" stroke="#2B64D8" stroke-opacity="0.35"/>
+  <rect x="610" y="601" width="240" height="18" rx="9" fill="#2A78FF"/>
+  <rect x="610" y="632" width="182" height="12" rx="6" fill="#8BA0C6" fill-opacity="0.35"/>
+  <text x="110" y="706" fill="#F0F0FF" font-family="Arial, sans-serif" font-size="62" font-weight="700" letter-spacing="6">TECH STORE</text>
+  <text x="111" y="745" fill="#7F95BA" font-family="Arial, sans-serif" font-size="24" letter-spacing="8">CATALOGO DIGITAL</text>
+  <defs>
+    <radialGradient id="bgGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(807 180) rotate(133.363) scale(733.419 1030.56)">
+      <stop stop-color="#2060FF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#06101E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screenGlow" x1="140" y1="262" x2="508" y2="466" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1B3D70"/>
+      <stop offset="1" stop-color="#0A1730"/>
+    </linearGradient>
+  </defs>
+</svg>
