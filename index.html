@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WebPro | Sites Profissionais que Geram Clientes</title>
+<title>PTC_development | Sites Profissionais que Geram Clientes</title>
 <meta name="description" content="Criação de sites modernos, rápidos e focados em conversão.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1586,102 +1586,6 @@ section {
   color: var(--white);
 }
 
-/* ─── TESTIMONIALS ─── */
-#testimonials {
-  padding: 120px 40px;
-  background: var(--bg-2);
-  border-top: 1px solid var(--border);
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.testimonial-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 36px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  border-radius: var(--radius-card);
-}
-
-.testimonial-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--blue), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-  border-radius: var(--radius-card) var(--radius-card) 0 0;
-}
-
-.testimonial-card:hover { background: rgba(32,96,255,0.03); border-color: var(--border-active); }
-.testimonial-card:hover::before { opacity: 1; }
-
-.t-stars { font-size: 14px; margin-bottom: 20px; letter-spacing: 2px; }
-
-.t-text {
-  font-size: 14px;
-  color: var(--off);
-  line-height: 1.8;
-  margin-bottom: 28px;
-  position: relative;
-  padding-left: 20px;
-  border-left: 2px solid var(--border-active);
-}
-
-.t-author { display: flex; align-items: center; gap: 14px; }
-
-.t-avatar {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--display);
-  font-size: 18px;
-  font-weight: 800;
-  color: #000;
-  flex-shrink: 0;
-}
-
-.t-name {
-  font-family: var(--display);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: -0.3px;
-}
-
-.t-biz {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--dim);
-  letter-spacing: 1.5px;
-  margin-top: 2px;
-}
-
-.t-result {
-  margin-top: 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--green);
-  letter-spacing: 1px;
-  border: 1px solid rgba(0,255,136,0.2);
-  padding: 5px 12px;
-  background: rgba(0,255,136,0.05);
-  border-radius: 20px;
-}
-
 /* ─── FAQ ─── */
 #faq { padding: 120px 40px; }
 
@@ -1741,6 +1645,147 @@ section {
   color: var(--off);
   font-size: 15px;
   line-height: 1.8;
+}
+
+/* ─── PRICING ─── */
+#pricing {
+  padding: 120px 40px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 34px 30px 30px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background:
+    radial-gradient(circle at top right, rgba(32,96,255,0.08), transparent 28%),
+    linear-gradient(180deg, rgba(10,14,26,0.96) 0%, rgba(6,8,18,0.98) 100%);
+  overflow: hidden;
+}
+
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pricing-card:hover::before { opacity: 1; }
+
+.pricing-card.is-popular {
+  border-color: rgba(64,128,255,0.36);
+  background:
+    radial-gradient(circle at top right, rgba(32,96,255,0.12), transparent 28%),
+    linear-gradient(180deg, rgba(12,18,34,0.98) 0%, rgba(6,8,18,1) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04),
+    0 24px 70px rgba(0,0,0,0.3);
+}
+
+.pricing-badge {
+  align-self: flex-start;
+  margin-bottom: 22px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(32,96,255,0.24);
+  background: rgba(32,96,255,0.08);
+  color: var(--blue-2);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+}
+
+.pricing-plan {
+  font-family: var(--display);
+  font-size: 24px;
+  line-height: 0.98;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+.pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: var(--display);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+
+.pricing-price span {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--off);
+}
+
+.pricing-meta {
+  margin-bottom: 26px;
+  color: var(--off);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.pricing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.pricing-list li {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--off);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.pricing-list li::before {
+  content: '•';
+  color: var(--blue);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pricing-note {
+  margin-top: auto;
+  margin-bottom: 24px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  color: var(--off);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.pricing-note strong {
+  color: var(--white);
+  font-weight: 600;
 }
 
 /* ─── CTA ─── */
@@ -2125,10 +2170,10 @@ footer {
   .portfolio-grid { grid-template-columns: 1fr; }
   .diff-layout { grid-template-columns: 1fr; gap: 40px; }
   .certificates-layout { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; gap: 40px; }
   .process-track { grid-template-columns: 1fr 1fr; }
   .process-track::before { display: none; }
-  .testimonials-grid { grid-template-columns: 1fr; }
   section { padding-left: 20px !important; padding-right: 20px !important; }
   .panel-section { margin: 20px 12px 0; border-radius: 28px; }
   .status-bar { padding: 8px 20px; display: none; }
@@ -2193,7 +2238,8 @@ footer {
     justify-content: center;
   }
   .cert-feature,
-  .cert-card {
+  .cert-card,
+  .pricing-card {
     padding: 22px;
   }
   .cert-feature-title {
@@ -2205,6 +2251,12 @@ footer {
   .cert-preview {
     aspect-ratio: 1 / 0.88;
     border-radius: 22px;
+  }
+  .pricing-plan {
+    font-size: 21px;
+  }
+  .pricing-price {
+    font-size: clamp(30px, 11vw, 42px);
   }
   .hero-stats {
     display: grid;
@@ -2266,7 +2318,7 @@ footer {
       <div class="intro-chip-core"></div>
     </div>
     <div class="intro-copy">
-      <div class="intro-kicker">BOOT SEQUENCE // WEBPRO</div>
+      <div class="intro-kicker">BOOT SEQUENCE // PTC_DEVELOPMENT</div>
       <h2 class="intro-title">Inicializando experiencia digital</h2>
       <p class="intro-sub">Preparando uma entrada mais fluida, com paineis arredondados e uma identidade visual inspirada em interfaces de tecnologia.</p>
       <div class="intro-progress" aria-hidden="true">
@@ -2292,7 +2344,7 @@ footer {
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">WEB<em>PRO</em></a>
+  <a href="#" class="nav-logo">PTC_<em>development</em></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#process">Processo</a></li>
@@ -2802,6 +2854,68 @@ footer {
   </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing" class="panel-section">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-num">// 06 — PLANOS</div>
+      <h2 class="section-title">Planos e<br><em>investimento</em></h2>
+    </div>
+    <p class="section-sub">Escolha formato ideal para momento atual do negócio, com escopo claro e apresentação direta.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-plan">Landing Page</div>
+      <div class="pricing-price">R$150<span>/mês</span></div>
+      <p class="pricing-meta">Página única, visual sofisticado, foco total em conversão.</p>
+      <ul class="pricing-list">
+        <li>Página única de alta conversão</li>
+        <li>Design sofisticado e responsivo</li>
+        <li>Formulário de contato incluso</li>
+        <li>Hospedagem inclusa</li>
+      </ul>
+      <p class="pricing-note"><strong>Manutenção inclusa.</strong> Valor mensal já cobre continuidade e acompanhamento.</p>
+      <a href="https://wa.me/5563993051851?text=Olá!+Quero+este+plano:+Landing+Page+de+R$150/mês." class="btn btn-primary" target="_blank">
+        <span class="btn-label">Quero este plano <span class="btn-arrow">→</span></span>
+      </a>
+    </div>
+
+    <div class="pricing-card is-popular reveal reveal-delay-2">
+      <div class="pricing-badge">Mais popular</div>
+      <div class="pricing-plan">Site Institucional</div>
+      <div class="pricing-price">R$400<span>pagamento único</span></div>
+      <p class="pricing-meta">Estrutura mais completa para presença digital sólida e profissional.</p>
+      <ul class="pricing-list">
+        <li>Múltiplas páginas</li>
+        <li>SEO otimizado</li>
+        <li>Painel de edição</li>
+        <li>Domínio configurado</li>
+      </ul>
+      <p class="pricing-note"><strong>Manutenção opcional:</strong> R$150/mês, com contratação separada.</p>
+      <a href="https://wa.me/5563993051851?text=Olá!+Quero+este+plano:+Site+Institucional+de+R$400." class="btn btn-primary" target="_blank">
+        <span class="btn-label">Quero este plano <span class="btn-arrow">→</span></span>
+      </a>
+    </div>
+
+    <div class="pricing-card reveal reveal-delay-3">
+      <div class="pricing-plan">Loja Virtual</div>
+      <div class="pricing-price">R$650<span>pagamento único</span></div>
+      <p class="pricing-meta">Operação digital pronta para vender com organização e controle.</p>
+      <ul class="pricing-list">
+        <li>Catálogo de produtos</li>
+        <li>Integração com pagamento</li>
+        <li>Gestão de estoque</li>
+        <li>Relatórios de vendas</li>
+      </ul>
+      <p class="pricing-note"><strong>Manutenção opcional:</strong> R$200/mês, com contratação separada.</p>
+      <a href="https://wa.me/5563993051851?text=Olá!+Quero+este+plano:+Loja+Virtual+de+R$650." class="btn btn-primary" target="_blank">
+        <span class="btn-label">Quero este plano <span class="btn-arrow">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta" class="panel-section">
   <div style="position:relative;z-index:1">
@@ -2882,7 +2996,7 @@ footer {
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-logo">WEB<em>PRO</em></div>
+        <div class="footer-logo">PTC_<em>development</em></div>
         <p class="footer-desc">Sites profissionais focados em conversão. Transformamos seu negócio em uma máquina de atrair clientes na internet.</p>
       </div>
       <div class="footer-links">
@@ -2904,7 +3018,7 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 <em>WebPro</em> — Todos os direitos reservados</p>
+      <p class="footer-copy">© 2025 <em>PTC_development</em> — Todos os direitos reservados</p>
       <p class="footer-copy">Feito com ❤️ para gerar resultados reais</p>
     </div>
   </div>
