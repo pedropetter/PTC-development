@@ -2152,14 +2152,22 @@ footer {
 
 /* ─── MOBILE ─── */
 @media (max-width: 900px) {
-  nav { top: 12px; left: 12px; right: 12px; padding: 0 20px; }
+  nav { top: 12px; left: 12px; right: 12px; padding: 0 18px; height: 64px; }
+  .nav-logo {
+    font-size: 15px;
+    letter-spacing: 1.6px;
+    max-width: calc(100% - 68px);
+    white-space: nowrap;
+  }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
-    position: absolute; top: 76px; left: 0; right: 0;
+    position: absolute; top: 72px; left: 0; right: 0;
     background: var(--bg-2); padding: 20px;
     border-bottom: 1px solid var(--border); z-index: 100;
     height: auto; align-items: flex-start;
+    border-radius: 24px;
+    overflow: hidden;
   }
   .nav-links li { height: auto; }
   .nav-links a { padding: 14px 0; border-left: none; border-bottom: 1px solid var(--border); width: 100%; }
@@ -2182,6 +2190,37 @@ footer {
   .hero-stat { flex: 1 1 0; min-width: 0; padding: 18px 18px; }
   .hero-stat-num { font-size: clamp(30px, 9vw, 40px); }
   .hero-stat-label { letter-spacing: 1.2px; }
+  .portfolio-card { aspect-ratio: 16 / 11; }
+  .card-bg { padding: 22px 18px; }
+  .card-browser {
+    width: min(88%, 360px);
+    min-height: 198px;
+  }
+  .project-shot {
+    width: clamp(72px, 23vw, 104px);
+    top: 59%;
+  }
+  .card-browser.has-project-image::before {
+    top: 59%;
+    width: clamp(104px, 30vw, 138px);
+  }
+  .card-browser.has-project-image::after {
+    top: 59%;
+    width: clamp(132px, 38vw, 176px);
+  }
+  .pricing-card {
+    padding: 28px 24px 24px;
+    min-height: auto;
+  }
+  .pricing-price {
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+  .pricing-price span {
+    line-height: 1.5;
+    letter-spacing: 1.5px;
+  }
+  .contact-info p { margin-bottom: 24px; }
   .section-header { gap: 18px; margin-bottom: 42px; padding-bottom: 36px; }
   .section-header > * { min-width: 0; }
   .section-title {
@@ -2206,6 +2245,25 @@ footer {
 }
 
 @media (max-width: 600px) {
+  nav {
+    left: 10px;
+    right: 10px;
+    padding: 0 16px;
+    border-radius: 22px;
+  }
+  .nav-logo {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .hamburger {
+    width: 44px;
+    height: 44px;
+    margin-right: -4px;
+  }
+  .nav-links.open {
+    top: 70px;
+    padding: 18px 16px;
+  }
   .benefits-grid { grid-template-columns: 1fr; }
   .cert-grid { grid-template-columns: 1fr; }
   .process-track { grid-template-columns: 1fr; }
@@ -2260,12 +2318,15 @@ footer {
   }
   .hero-stats {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     overflow: hidden;
   }
   .hero-stat {
     padding: 16px 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
   }
+  .hero-stat:last-child { border-bottom: none; }
   .hero-stat-num {
     font-size: clamp(24px, 10vw, 34px);
   }
@@ -2281,6 +2342,68 @@ footer {
   .section-title {
     font-size: clamp(28px, 11vw, 40px);
     line-height: 0.94;
+  }
+  .portfolio-card {
+    aspect-ratio: 16 / 12;
+    min-height: 280px;
+  }
+  .card-bg {
+    padding: 18px 14px;
+  }
+  .card-browser {
+    width: min(92%, 320px);
+    min-height: 178px;
+    border-radius: 20px;
+  }
+  .card-browser.has-project-image .browser-bar {
+    margin: 14px 14px 0;
+    padding: 7px 8px;
+  }
+  .browser-url {
+    min-width: 0;
+    font-size: 8px;
+  }
+  .project-shot {
+    width: clamp(64px, 24vw, 88px);
+    top: 60%;
+  }
+  .card-browser.has-project-image::before {
+    top: 60%;
+    width: clamp(96px, 32vw, 122px);
+  }
+  .card-browser.has-project-image::after {
+    top: 60%;
+    width: clamp(122px, 40vw, 156px);
+  }
+  .pricing-badge {
+    margin-bottom: 18px;
+    padding: 6px 12px;
+    letter-spacing: 1.6px;
+  }
+  .pricing-plan {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+  .pricing-meta,
+  .pricing-list li,
+  .pricing-note {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .contact-layout { gap: 28px; }
+  .contact-info p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 18px 0 22px;
+  }
+  .form-card-title {
+    font-size: 18px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+  }
+  .form-input {
+    padding: 13px 16px;
+    font-size: 13px;
   }
   .float-wa {
     right: 16px;
