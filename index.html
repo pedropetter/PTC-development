@@ -2415,6 +2415,204 @@ footer {
   .site-intro::after { width: min(92vw, 360px); }
 }
 
+@media (max-width: 430px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .site-shell {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  section {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  #hero {
+    min-height: auto;
+    padding: 150px 16px 54px !important;
+    justify-content: flex-start;
+  }
+
+  .panel-section {
+    width: calc(100% - 20px);
+    margin: 16px auto 0;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    border-radius: 22px;
+  }
+
+  nav {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+  }
+
+  .nav-logo {
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    max-width: calc(100vw - 92px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-content,
+  .hero-bottom,
+  .hero-actions,
+  .hero-stats,
+  .benefits-grid,
+  .portfolio-grid,
+  .process-track,
+  .certificates-layout,
+  .cert-grid,
+  .pricing-grid,
+  .contact-layout {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-corner-tag {
+    display: none;
+  }
+
+  .hero-line-top {
+    top: 132px;
+  }
+
+  .hero-tag {
+    max-width: 100%;
+    gap: 8px;
+    font-size: 9px;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    flex-wrap: wrap;
+  }
+
+  .hero-tag::before {
+    width: 22px;
+  }
+
+  .hero-title {
+    font-size: clamp(34px, 12vw, 42px);
+    line-height: 0.94;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 14px;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+
+  .btn-label {
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .section-header {
+    width: 100%;
+    display: block;
+    margin-bottom: 34px;
+    padding-bottom: 28px;
+  }
+
+  .section-num {
+    letter-spacing: 1.6px;
+  }
+
+  .section-title {
+    font-size: clamp(27px, 10.5vw, 38px);
+    letter-spacing: -0.8px;
+  }
+
+  .section-sub {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 18px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .benefit-card,
+  .process-step,
+  .diff-item,
+  .cert-feature,
+  .cert-card,
+  .pricing-card,
+  .form-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .portfolio-card {
+    width: 100%;
+    min-height: 260px;
+    aspect-ratio: auto;
+  }
+
+  .card-bg {
+    width: 100%;
+    padding: 16px 10px;
+  }
+
+  .card-browser {
+    width: min(100%, 300px);
+    min-height: 166px;
+  }
+
+  .portfolio-overlay {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .portfolio-name {
+    font-size: clamp(22px, 8vw, 30px);
+  }
+
+  .pricing-price {
+    font-size: clamp(28px, 10vw, 36px);
+    letter-spacing: -1px;
+  }
+
+  .pricing-list {
+    gap: 10px;
+  }
+
+  .cert-preview {
+    min-height: 220px;
+  }
+
+  .form-card {
+    border-radius: 20px;
+  }
+
+  .form-submit {
+    font-size: 10px;
+    letter-spacing: 1.6px;
+  }
+}
+
 @media (hover: none), (pointer: coarse) {
   body { cursor: auto; }
   #cursor-outer,
